@@ -27,9 +27,9 @@ def latest():
 
     
 
-@app.route("/about")
+@app.route("/about", methods=['GET', 'POST'])
 def about():
-    return render_template('about.html', title='About')
+    return render_template('about.html')
 
 
 @app.route("/register", methods=['GET', 'POST'])
