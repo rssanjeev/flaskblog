@@ -98,16 +98,26 @@ def save_picture(form_picture):
 
 def save_pictures(form_pictures):
     random_hex = secrets.token_hex(8)
-    for form_picture in form_pictures:
-        _, f_ext = os.path.splitext(form_picture.filename)
+    if len(form_pictures)==1:
+        _, f_ext = os.path.splitext(form_pictures.filename)
         picture_fn = random_hex + f_ext
         picture_path = os.path.join(app.root_path, 'static/post_pictures', picture_fn)
         output_size = (125, 125)
         i = Image.open(form_picture)
         i.thumbnail(output_size)
         i.save(picture_path)
-        pictures = pictures.append(picture_fn)
-    return pictures
+        return picture_fn
+    else:
+        for form_picture in form_pictures:
+            _, f_ext = os.path.splitext(form_picture.filename)
+            picture_fn = random_hex + f_ext
+            picture_path = os.path.join(app.root_path, 'static/post_pictures', picture_fn)
+            output_size = (125, 125)
+            i = Image.open(form_picture)
+            i.thumbnail(output_size)
+            i.save(picture_path)
+            pictures = pictures.append(picture_fn)
+        return pictures
 
 
 @app.route("/account", methods=['GET', 'POST'])
@@ -135,7 +145,7 @@ def account():
 def new_post():
     form = PicPostForm()
     if form.validate_on_submit():
-        post = Post(title=form.title.data, content=form.content.data, author=current_user, images=form.pictures.data)
+        post = Post(title=form.title.data, content=form.content.data, author=current_user, images=save_pictures(form.pictures.data))
         db.session.add(post)
         db.session.commit()
         flash('Your post has been created!', 'success')

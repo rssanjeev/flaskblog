@@ -62,7 +62,7 @@ class PostForm(FlaskForm):
 class PicPostForm(FlaskForm):
     title = StringField('Title', validators=[DataRequired()])
     content = TextAreaField('Content', validators=[DataRequired()])
-    pictures = MultipleFileField('Upload Post Pictures', validators=[FileAllowed(['jpg', 'png'])])
+    pictures = MultipleFileField('Pictures', validators=[FileAllowed(['jpg', 'png'])])
     submit = SubmitField('Post')
 
 
