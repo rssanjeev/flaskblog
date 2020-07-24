@@ -99,11 +99,11 @@ def save_picture(form_picture):
 def save_pictures(form_pictures):
     random_hex = secrets.token_hex(8)
     if len(form_pictures)==1:
-        _, f_ext = os.path.splitext(form_pictures.filename)
+        _, f_ext = os.path.splitext(form_pictures[0].filename)
         picture_fn = random_hex + f_ext
         picture_path = os.path.join(app.root_path, 'static/post_pictures', picture_fn)
         output_size = (125, 125)
-        i = Image.open(form_picture)
+        i = Image.open(form_pictures[0])
         i.thumbnail(output_size)
         i.save(picture_path)
         return picture_fn
@@ -144,8 +144,9 @@ def account():
 @login_required
 def new_post():
     form = PicPostForm()
+    pic = save_pictures(form.pictures.data)
     if form.validate_on_submit():
-        post = Post(title=form.title.data, content=form.content.data, author=current_user, images=save_pictures(form.pictures.data))
+        post = Post(title=form.title.data, content=form.content.data, author=current_user, images=pic)
         db.session.add(post)
         db.session.commit()
         flash('Your post has been created!', 'success')
