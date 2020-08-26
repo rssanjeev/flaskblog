@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
 {% block content %}
 <div class="content-section">
-    <form method="POST" action="">
+    <form method="POST" action="" enctype="multipart/form-data">
         {{ form.hidden_tag() }}
         <fieldset class="form-group">
             <legend class="border-bottom mb-4">{{ legend }}</legend>
@@ -18,24 +18,92 @@
                     {{ form.title(class="form-control form-control-lg") }}
                 {% endif %}
             </div>
-            <div class="form-group">
-                {{ form.content.label(class="form-control-label") }}
-                {% if form.content.errors %}
-                    {{ form.content(class="form-control form-control-lg is-invalid") }}
+            <div class="form-group ">
+                <!-- {{ form.costpp.label(class="form-control-label") }} ($)
+                {% if form.costpp.errors %}
+                    {{ form.costpp(class="form-control form-control-lg is-invalid") }}
                     <div class="invalid-feedback">
-                        {% for error in form.content.errors %}
+                        {% for error in form.costpp.errors %}
                             <span>{{ error }}</span>
                         {% endfor %}
                     </div>
                 {% else %}
-                    {{ form.content(class="form-control form-control-lg") }}
+                    <div class="col-md-2 mb-3">
+                    {{ form.costpp(class="form-control form-control-lg") }}
+                    </div> -->
+                {% endif %}
+                <div class="form-row">
+                    <div class="col-md-5 mb-3">
+                        {{ form.univ.label(class="form-control-label") }}
+                            {% if form.univ.errors %}
+                                {{ form.univ(class="form-control form-control-lg is-invalid") }}
+                                    <div class="invalid-feedback">
+                                {% for error in form.univ.errors %}
+                                    <span>{{ error }}</span>
+                                {% endfor %}
+                                    </div>
+                                {% else %}
+                                    {{ form.univ(class="form-control form-control-lg") }}
+                                    <!-- <select class="form-control form-control-lg">{{form.univ(class="form-control form-control-lg")}}</select> -->
+                                {% endif %}
+                    </div>
+                    <div class="col-md-3 mb-3">
+                        {{ form.city.label(class="form-control-label") }}
+                        {% if form.city.errors %}
+                            {{ form.city(class="form-control form-control-lg is-invalid") }}
+                            <div class="invalid-feedback">
+                                {% for error in form.city.errors %}
+                                    <span>{{ error }}</span>
+                                {% endfor %}
+                            </div>
+                        {% else %}
+                            {{ form.city(class="form-control form-control-lg") }}
+                        {% endif %}
+                    </div>
+                    <div class="col-md-3 mb-3">
+                        {{ form.costpp.label(class="form-control-label") }} ($)
+                        {% if form.costpp.errors %}
+                            {{ form.costpp(class="form-control form-control-lg is-invalid") }}
+                            <div class="invalid-feedback">
+                                {% for error in form.costpp.errors %}
+                                    <span>{{ error }}</span>
+                                {% endfor %}
+                            </div>
+                        {% else %}
+                            {{ form.costpp(class="form-control form-control-lg") }}
+                        {% endif %}
+
+                    </div>
+                  </div>
+            
+            </div>
+            <div class="form-group">
+                {{ form.story.label(class="form-control-label") }}
+                {% if form.story.errors %}
+                    {{ form.story(class="form-control form-control-lg is-invalid") }}
+                    <div class="invalid-feedback">
+                        {% for error in form.story.errors %}
+                            <span>{{ error }}</span>
+                        {% endfor %}
+                    </div>
+                {% else %}
+                    {{ form.story(class="form-control form-control-lg") }}
                 {% endif %}
             </div>
         </fieldset>
-        <div class="choose_file">
+        <div class="input-group">
             <!-- <span>Choose File</span> -->
-            <input name="photos" type="file" multiple='True'/><br>
+            <div class="input-group-prepend">
+                <span class="input-group-text" id="inputGroupFileAddon01">Upload</span>
+            </div>
+            <div class="custom-file">
+                <input type="file" class="custom-file-input" id="Pictures" aria-describedby="inputGroupFileAddon01" name="Pictures" multiple='True' accept=".jpg,.png">
+                <label class="custom-file-label" for="Pictures">Choose file</label>
+            </div>
         </div>
+            <!-- <span>Choose File</span> -->
+            <!-- <input name="Pictures" type="file" multiple='True' accept=".jpg,.png"><br>
+        -->
         <br>
         <div class="form-group">
             {{ form.submit(class="btn btn-outline-info") }}

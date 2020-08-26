@@ -1,0 +1,82 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<div class="content-section">
+    <form method="POST" action="" enctype="multipart/form-data">
+        {{ form.hidden_tag() }}
+        <fieldset class="form-group">
+            <legend class="border-bottom mb-4">{{ legend }}</legend>
+            <div class="form-group ">
+                <div class="form-row">
+                    <div class="col-md-5 mb-3">
+                        {{ form.univ.label(class="form-control-label") }}
+                            {% if form.univ.errors %}
+                                {{ form.univ(class="form-control form-control-lg is-invalid") }}
+                                    <div class="invalid-feedback">
+                                {% for error in form.univ.errors %}
+                                    <span>{{ error }}</span>
+                                {% endfor %}
+                                    </div>
+                                {% else %}
+                                    {{ form.univ(class="form-control form-control-lg") }}
+                                    <!-- <select class="form-control form-control-lg">{{form.univ(class="form-control form-control-lg")}}</select> -->
+                                {% endif %}
+                    </div>
+                    <div class="col-md-3 mb-3">
+                        {{ form.city.label(class="form-control-label") }}
+                        {% if form.city.errors %}
+                            {{ form.city(class="form-control form-control-lg is-invalid") }}
+                            <div class="invalid-feedback">
+                                {% for error in form.city.errors %}
+                                    <span>{{ error }}</span>
+                                {% endfor %}
+                            </div>
+                        {% else %}
+                            {{ form.city(class="form-control form-control-lg") }}
+                        {% endif %}
+                    </div>
+                    <div class="col-md-2 mb-3">
+                    <label class="my-1 mr-2" for='min'>Min</label>
+                    <select class="custom-select my-1 mr-sm-2" id="min">
+                        <option selected>Choose...</option>
+                        <option value="1">0</option>
+                        <option value="2">50</option>
+                        <option value="3">100</option>
+                        <option value="3">150</option>
+                    </select>
+                    </div>
+                    <div class="col-md-2 mb-3">
+                        <label class="my-1 mr-2" for="inlineFormCustomSelectPref">Max</label>
+                        <select class="custom-select my-1 mr-sm-2" id="inlineFormCustomSelectPref">
+                            <option selected>Choose...</option>
+                            <option value="1">100</option>
+                            <option value="2">150</option>
+                            <option value="3">200</option>
+                            <option value="3">250</option>
+                        </select>
+                        </div>
+                        <!-- <div class="col-md-3 mb-3">
+                        {{ form.costpp.label(class="form-control-label") }} ($)
+                        {% if form.costpp.errors %}
+                            {{ form.costpp(class="form-control form-control-lg is-invalid") }}
+                            <div class="invalid-feedback">
+                                {% for error in form.costpp.errors %}
+                                    <span>{{ error }}</span>
+                                {% endfor %}
+                            </div>
+                        {% else %}
+                            {{ form.costpp(class="form-control form-control-lg") }}
+                        {% endif %}
+                    </div> -->
+                                </div>
+            </div>
+            <div class="form-group">
+                {{ form.submit(class="btn btn-outline-info") }}
+            </div>
+        </fieldset>
+            <!-- <span>Choose File</span> -->
+
+    </form>
+</div>
+
+{% endblock content %}
