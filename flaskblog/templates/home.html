@@ -10,7 +10,7 @@
             </div>
             <h2><a class="article-title" href="{{ url_for('post', post_id=post.id) }}">{{ post.title }}</a></h2>
             <h6><a class="article-title" href="{{ url_for('post', post_id=post.id) }}">${{ post.costpp }}</a></h6>
-            <h6><a class="article-title" href="{{ url_for('post', post_id=post.id) }}">{{ post.univ }}, {{ post.city }}</a></h6>
+            <h6><a class="article-title" href="{{ url_for('univ_posts', univ=post.univ) }}">{{ post.univ }}, </a> <a class="article-title" href="{{ url_for('city_posts', city=post.city) }}">{{ post.city }}</a></h6>
             
             <p class="article-content">{{ post.story }}</p>
             <div class="container">
