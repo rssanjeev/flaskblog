@@ -38,8 +38,12 @@ class Post(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     title = db.Column(db.String(100), nullable=False)
     date_posted = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)
-    content = db.Column(db.Text, nullable=False)
+    story = db.Column(db.Text, nullable=False)
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
+    images = db.Column(db.String(200), nullable=False, default='default.jpg')
+    univ = db.Column(db.String(50), nullable=False)
+    city = db.Column(db.String(25), nullable=False)
+    costpp = db.Column(db.Integer, nullable=False, default = 0)
 
     def __repr__(self):
         return f"Post('{self.title}', '{self.date_posted}')"
