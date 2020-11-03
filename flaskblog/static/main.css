@@ -9,16 +9,18 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .bg-steel {
-  background-color: #44ebcf;
+  color: #fff;
+  background: linear-gradient( -45deg, #EE7752, #E73C7E, #23A6D5, #23D5AB);
+  animation: change 5s ease-in-out infinite;
 }
 
-.site-header .navbar-nav .nav-link {
+/* .site-header .navbar-nav .nav-link {
   color: #000000;
-}
+} */
 
 .site-header .navbar-nav .nav-link:hover {
   color: #000000;
-  font-size: 17px;
+  font-size: 16px;
 }
 
 .site-header .navbar-nav .nav-link.active {
@@ -83,4 +85,27 @@ a.article-title:hover {
 
 .account-heading {
   font-size: 2.5rem;
+}
+
+.gallery{
+  margin: 10px 50px;
+}
+
+.gallery img{
+  width: 230px;
+  padding: 5px;
+  filter: grayscale(100%);
+  transition: 1s;
+}
+
+.gallery img:hover{
+  filter: grayscale(0);
+  transform: scale(1.1);
+}
+
+
+header {
+  font: 400 17px/1.2 'Merienda One', Helvetica, sans-serif;
+  color: rgba(0,0,0,0.7);
+  text-shadow: 1.5px 1.5px 1.5px rgb(110, 110, 110);
 }

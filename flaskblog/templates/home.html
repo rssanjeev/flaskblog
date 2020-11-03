@@ -11,10 +11,8 @@
             <h2><a class="article-title" href="{{ url_for('post', post_id=post.id) }}">{{ post.title }}</a></h2>
             <h6><a class="article-title" href="{{ url_for('post', post_id=post.id) }}">${{ post.costpp }}</a></h6>
             <h6><a class="article-title" href="{{ url_for('post', post_id=post.id) }}">{{ post.univ }}, {{ post.city }}</a></h6>
-            
             <p class="article-content">{{ post.story }}</p>
-            <div class="container">
-              <div class = "row">
+            <div class="gallery">
             {% set x= post.images %}
             {% set l =  (x.split(','))%}
             {% for i in l%}
@@ -23,12 +21,21 @@
               {% endif %}
             {% set i = i[2:] %}
             {% set i = i[:-1] %}
-            <div class="col-md-auto">
-            <img class="img-rounded img-thumbnail" src="{{ url_for('static', filename='post_pics/' + i) }}" height="2500" width="400">
-            </div>
+                <!-- <div class="col-md-auto"> -->
+
+                  <!-- <img class="img-rounded img-thumbnail" src="{{ url_for('static', filename='post_pics/' + i) }}" height="2500" width="400"> -->
+                  <a href="{{ url_for('static', filename='post_pics/' + i) }}" data-lightbox="mygallery "> <img src="{{ url_for('static', filename='post_pics/' + i) }}" height="200" width="200"></a>
+
+                  <!-- </div> -->
             {% endfor%}
           </div>
-          </div>
+            <div class="navigation">
+            {% for i in l%}
+              <label class="bar"></label>
+            {% endfor %}
+            </div>
+
+
                   </article>
     {% endfor %}
     {% for page_num in posts.iter_pages(left_edge=1, right_edge=1, left_current=1, right_current=2) %}
