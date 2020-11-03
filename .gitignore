@@ -3,3 +3,4 @@
 *.pyc
 *.pyc
 flasskblog/__pycache__/
+*.pyc
