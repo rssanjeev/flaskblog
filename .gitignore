@@ -2,5 +2,5 @@
 *.db
 *.pyc
 *.pyc
-flasskblog/__pycache__/
+flaskblog/__pycache__/
 *.pyc
