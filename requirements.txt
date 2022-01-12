@@ -28,7 +28,7 @@ MarkupSafe==1.1.1
 mccabe==0.6.1
 numpy==1.18.3
 Pillow==7.1.2
-pipenv==2018.11.26
+pipenv==2022.1.8
 pycparser==2.20
 pylint==2.5.2
 pylint-flask==0.6
